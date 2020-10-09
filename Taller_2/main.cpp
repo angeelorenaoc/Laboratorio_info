@@ -5,6 +5,7 @@ using namespace std;
 
 bool comparar_cadena(char [], char []);
 int longitud(char *);
+void convertir_numero (int *);
 int main()
 {
     int opcion = 1;
@@ -61,6 +62,13 @@ int main()
             else{
                 cout << "No son iguales" << endl;
             }
+        }break;
+        case 3:{
+            int num;
+            cout << "Ingrese el numero: " << endl;
+            cin >> num;
+            convertir_numero(&num);
+            return 0;
         }break;
         case 8:{
             int matriz[5][5], num = 0;
@@ -131,4 +139,18 @@ int longitud(char *c1){
     for(i=0; *(c1+i) != '\0'; i++){
         j++;}
     return j;
+}
+void convertir_numero (int *a){
+    int arreglo [50], b=0, i;
+    for (i = 0; *a > 0; i++){
+        b = *a % 10;
+        *a = *a / 10;
+        arreglo[i]=b;
+
+    }
+    i--;
+    for (int j = i ; j >= 0; j--){
+        cout << (char)(arreglo[j]+48);
+    }
+    cout << endl;
 }
