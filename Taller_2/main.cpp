@@ -70,6 +70,244 @@ int main()
             convertir_numero(&num);
             return 0;
         }break;
+        case 4:{
+            char c1[50], c2[25];
+            int j,i;
+            cout << "Ingrese una cadena de caracteres: " << endl;
+            cin >> c1;
+            for (i=0; *(c1+i) != '\0'; i++){
+                int o = 0;
+                for (j = 0; *(c2+j) != '\0'; j++){
+                    if (*(c1+i) == *(c2+j)){
+                        o++;
+                    }
+                }
+                if (o == 0){
+                    c2[j]= c1[i];
+                }
+            }
+            cout << c2 << endl;
+        }break;
+        case 5:{
+            char *roma = NULL;
+            roma = new char[25];
+            int i,suma=0,m=0,d=0,c=0,l=0,x=0,v=0,I=0,cm=0,cd=0,xc=0,xl=0,ix=0,iv=0;
+            cout << "Ingrese el numero romano(TODAS LAS LETRAS DEBEN ESTAR EN MAYUSCULA): " << endl;
+            cin >> roma;
+            for (i = 0; *(roma+i) != '\0'; i++){
+                if (*(roma+i) == 'M'){
+                    if (m >= 3){
+                        cout << "El numero romano ingresado es incorrecto. Excede el numero de M" << endl;
+                        break;
+                    }
+                    suma += 1000;
+                    m++;
+                }
+
+                else if (*(roma+i) == 'D'){
+                    if (d >= 1){
+                        cout << "El numero romano ingresado es incorrecto. Excede el numero de D" << endl;
+                        break;
+                    }
+                    suma += 500;
+                    d++;
+                }
+
+                else if (*(roma+i) == 'C'){
+                    if (c >= 3){
+                        cout << "El numero romano ingresado es incorrecto. Excede el numero de C" << endl;
+                        break;
+                    }
+                    i++;
+                    cout << *(roma+i) << endl;
+                    if (*(roma+i) == 'M'){
+                        if (cm >= 1){
+                            cout << "El numero romano ingresado es incorrecto. Excede el numero de CM" << endl;
+                            break;
+                        }
+                        suma += 900;
+                        i++;
+                        cm++;
+                    }
+                    else if (*(roma+i) == 'D'){
+                        if (cd >= 1){
+                            cout << "El numero romano ingresado es incorrecto. Excede el numero de CD" << endl;
+                            break;
+                        }
+                        suma+=400;
+                        i++;
+                        cd++;}
+                    else{
+                        suma += 100;
+                        i--;
+                        c++;}
+                }
+
+                else if (*(roma+i) == 'L'){
+                    if (l >= 1){
+                        cout << "El numero romano ingresado es incorrecto. Excede el numero de L" << endl;
+                        break;}
+                    suma += 50;
+                    l++;
+                }
+
+                else if (*(roma+i) == 'X'){
+                    if (x >= 3){
+                        cout << "El numero romano ingresado es incorrecto. Excede el numero de C" << endl;
+                        break;
+                    }
+                    i++;
+                    if (*(roma+i) == 'L'){
+                        if (xl >= 1){
+                            cout << "El numero romano ingresado es incorrecto. Excede el numero de XL" << endl;
+                            break;
+                        }
+                        xl++;
+                        suma += 40;
+                    }
+                    else if (*(roma+i) == 'C'){
+                        if (xc >= 1){
+                            cout << "El numero romano ingresado es incorrecto. Excede el numero de XC" << endl;
+                            break;
+                        }
+                        xc++;
+                        suma += 90;
+                    }
+                    else {
+                     suma += 10;
+                     i--;
+                     x++;
+                    }
+                }
+
+                else if (*(roma+i) == 'V'){
+                    if (v >= 1){
+                        cout << "El numero romano ingresado es incorrecto. Excede el numero de V" << endl;
+                        break;
+                    }
+                    suma += 5;
+                    v++;
+                }
+
+                else if (*(roma+i) == 'I'){
+                    i++;
+                    if (I >= 3){
+                        cout << "El numero romano ingresado es incorrecto. Excede el numero de I" << endl;
+                        break;
+                    }
+                    if (*(roma+i)=='X'){
+                        if (ix >= 1){
+                            cout << "El numero romano ingresado es incorrecto. Excede el numero de IX" << endl;
+                            break;
+                        }
+                        suma +=9;
+                        ix++;
+                    }
+                    else if (*(roma+i)=='V'){
+                        if (iv >= 1){
+                            cout << "El numero romano ingresado es incorrecto. Excede el numero de IV" << endl;
+                            break;
+                        }
+                        iv++;
+                        suma += 4;
+                    }
+                    else {
+                        suma += 1;
+                        i--;
+                        I++;}
+                }
+
+                else{
+                    cout << "El numero ingresado no se encuentra en las letras permitidas."<< endl;
+                    break;
+                }
+            }
+            if (*(roma+i) == '\0'){cout << suma << endl;}
+            delete [] roma;
+        }
+        case 6:{
+            char matriz[15][20] ;
+            for (int i = 0; i < 15; i++){
+                for (int j = 0; j < 20; j++){
+                    matriz[i][j] = 0;
+                }
+            }
+            int opcion = 1;
+            while( opcion != 0){
+                char letra='A';
+                cout << "  ";
+                for (int o = 1; o <= 20; o++ ){cout << " " << o;}
+                cout << endl;
+                for (int i = 0; i < 15; i++){
+                    cout << letra;
+                    for (int j = 0; j < 20; j++){
+                        if (matriz[i][j] == 0){
+                            cout << " +";
+                        }
+                        else if (matriz[i][j] == 1){
+                            cout << " -";
+                        }
+                    }
+                    cout << endl;
+                    letra ++;
+                }
+                cout << endl << "----BIENVENIDO AL CINE----" << endl;
+                cout << "0. Para salir." << endl;
+                cout << "1. Hacer una reserva." << endl;
+                cout << "2. Hacer una cancelacion." << endl;
+                cout << "Ingrese una opcion del menu." << endl;
+                cin >> opcion;
+                switch (opcion) {
+                case 0:break;
+                case 1:{
+                     int num,m;
+                     char letra;
+                     cout << "Ingrese la letra de la fila en mayuscula: " << endl;
+                     cin >> letra;
+                     cout << "Ingrese el numero de la columna" << endl;
+                     cin >> num;
+                     m = (int)(letra-65);
+                     num --;
+                     if (m <= 14 && num < 20){
+                        if (matriz[m][num] == 0){
+                            matriz[m][num]=1;
+                            cout << "La reserva ha sido realizada con exito." << endl;
+                        }
+                        else if (matriz[m][num] == 1){
+                            cout << "Este asiento ya esta reservado" << endl;
+                        }
+                     }
+                     else {
+                         cout << "La posicion indicada esta fuera del rango." << endl;
+                     }
+                }break;
+                case 2:{
+                    int num,m;
+                    char letra;
+                    cout << "Ingrese la letra de la fila en mayuscula: " << endl;
+                    cin >> letra;
+                    cout << "Ingrese el numero de la columna" << endl;
+                    cin >> num;
+                    m = (int)(letra-65);
+                    num --;
+                    if (m <= 14 && num < 20){
+                       if (matriz[m][num] == 1){
+                           matriz[m][num]=0;
+                           cout << "La cancelacion de la reserva ha sido realizada con exito." << endl;
+                       }
+                       else if (matriz[m][num] == 0){
+                           cout << "Este asiento esta vacio" << endl;
+                       }
+                    }
+                    else {
+                        cout << "La posicion indicada esta fuera del rango." << endl;
+                    }
+                }break;
+                default:{cout << "La opcion ingresada no se encuentra en el menu." << endl;}
+
+                }
+            }
+        }break;
         case 8:{
             int matriz[5][5], num = 0;
             for (int i = 0; i < 5; i++){
@@ -107,7 +345,7 @@ int main()
                 cout << endl;
             }
         }break;
-        case 10:{
+        case 9:{
             int num;
             unsigned long long int suma = 0, o = 1, p=1;
             cout << "Ingrese las dimensiones de la matriz: " << endl;
