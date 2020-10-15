@@ -6,6 +6,7 @@ using namespace std;
 bool comparar_cadena(char [], char []);
 int longitud(char *);
 void convertir_numero (int *);
+bool numero_amigable(int);
 int main()
 {
     int opcion = 1;
@@ -308,6 +309,7 @@ int main()
                 }
             }
         }break;
+        case 7:{cout << "Incompleto" << endl;}break;
         case 8:{
             int matriz[5][5], num = 0;
             for (int i = 0; i < 5; i++){
@@ -360,6 +362,17 @@ int main()
             suma = o/p;
             cout << "El numero de camino es:" << suma << endl;
         }break;
+        case 10:{
+            int n, suma = 0;
+            cout << " Ingrese el limite de la suma de los numeros amigables:" << endl;
+            cin >> n;
+            for (int i = n; i >= 220;i--){
+                if (numero_amigable(i)==true){suma+=i;}
+
+            }
+            cout << "La suma de los numeros amigables menores a " << n << " es igual a: " << suma << endl;
+        }break;
+        default:{cout<< "La opcion ingresa es incorrecta" << endl;}break;
      }
    }
     return 0;
@@ -391,4 +404,16 @@ void convertir_numero (int *a){
         cout << (char)(arreglo[j]+48);
     }
     cout << endl;
+}
+bool numero_amigable(int a){
+    int acu1 = 0, acu2 = 0;
+    for (int j = 1; j <= ((a/2)+1); j++){
+        if (a%j == 0){acu1 += j;}
+    }
+    for (int j = 1; j <= ((acu1/2)+1); j++){
+        if (acu1%j == 0){acu2 += j;}
+    }
+    if (acu1 == a){return false;}
+    if (acu2 == a){return true;}
+    else {return false;}
 }
